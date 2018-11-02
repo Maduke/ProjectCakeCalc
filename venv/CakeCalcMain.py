@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 
 def _test_Input():
     print(cakeSizeC5.get())
@@ -19,6 +20,8 @@ def _test_Input():
     cakeSizeS14.get() + cakeSizeS16.get()
 
     print("Total Slices: " + str(sum))
+    out1.delete(0, 'end')
+    out1.insert(0, str(sum))
 
 
 def show_roundCakes():  # show all round cake sizes
@@ -32,7 +35,9 @@ def show_roundCakes():  # show all round cake sizes
     Checkbutton(f123, text='12-in', onvalue=34, variable=cakeSizeC12).grid(row=7, column=0)
     Checkbutton(f123, text='14-in', onvalue=50, variable=cakeSizeC14).grid(row=8, column=0)
     Checkbutton(f123, text='16-in', onvalue=60, variable=cakeSizeC16).grid(row=9, column=0)
-    f123.update()
+    bC['relief'] = 'sunken'
+    bS['relief'] = 'raised'
+    #f123.update()
     print('Updated')
 
 
@@ -42,7 +47,9 @@ def show_squareCakes():  # show all square cake sizes
     Checkbutton(f123, text='12-in', onvalue=40, variable=cakeSizeS12).grid(row=2, column=0)
     Checkbutton(f123, text='14-in', onvalue=60, variable=cakeSizeS14).grid(row=3, column=0)
     Checkbutton(f123, text='16-in', onvalue=90, variable=cakeSizeS16).grid(row=4, column=0)
-    f123.update()
+    bS['relief'] = 'sunken'
+    bC['relief'] = 'raised'
+    #f123.update()
     print('Updated')
 
 
@@ -72,22 +79,31 @@ cakeSizeC16 = IntVar()
 
 # Set up the window with a name, icon and basic formatting
 window.title("Custom Creations Cake Calculator")
-window.iconbitmap('BakeryLogo.png')
-frame1 = Frame(window)
+#window.iconbitmap('BakeryLogo.png')
+frame1 = Frame(window, relief="sunken")
 frame1.grid(padx=100, pady=5, row=0, column=0)
 
 # Show cake shape selector
 f123 = Frame(frame1)
 f123.grid(row=2, column=0)
-Button(frame1, text="Circular Cake", command=show_roundCakes).grid(row=0, column=0)
-Button(frame1, text="Square Cake", command=show_squareCakes).grid(row=0, column=1)
-
-# Show cake size box
+bC = Button(frame1, text="Circular Cake", command=show_roundCakes)
+bS = Button(frame1, text="Square Cake", command=show_squareCakes)
+bC.grid(row=0, column=0)
+bS.grid(row=0, column=1)
+# Show 'cake size' label
 Label(frame1, text='CakeSize').grid(row=1, column=0)
 
+# show button and output
 b1 = Button(frame1, text="Calculate", command=_test_Input)
 b1.grid(row=6, column=0)
+out1 = Entry(frame1, justify='center')
+out1.grid(row=6, column=1)
 
+# show step 2 options
+frame2 = Frame(frame1)
+frame2.grid(row=0, column=3)
+Label(frame2, text="Step 2").grid(row=0, column=0)
+ttk.Separator(frame2, orient=VERTICAL).grid(column=2, sticky="ns")
 window.mainloop()
 
 
