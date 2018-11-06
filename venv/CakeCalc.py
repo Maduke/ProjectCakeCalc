@@ -38,6 +38,26 @@ def clearWidg(fName):
     print('Cleared Widget')
 
 
+def show_S1():
+    print('Hewwo World')
+    step2F.grid_forget()
+    step1F.grid(row=0, column=3)
+    step3F.grid_forget()
+
+def show_S2():
+    print('Hewwo World')
+    step1F.grid_forget()
+    step2F.grid(row=0, column=3)
+    step3F.grid_forget()
+
+
+def show_S2():
+    print('Hewwo World')
+    step1F.grid_forget()
+    step2F.grid_forget()
+    step3F.grid(row=0, column=3)
+
+
 window = Tk()
 # Variable declarations
 cakeSizeS10 = IntVar()
@@ -60,8 +80,9 @@ window.title("Custom Creations Cake Calculator")
 frame_main = Frame(window, relief="sunken")
 frame_main.grid(padx=50, pady=5, row=0, column=0)
 
-# Set up Step 1 label and seperator
-Label(frame_main, text="Step 1").grid(row=0, column=0)
+# Set up Step 1 button and seperator
+st1B = Button(frame_main, text="Step 1", command=show_S1)
+st1B.grid(row=0, column=0)
 ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=2, rowspan=3, sticky=(S, N))
 
 step1F = Frame(frame_main)
@@ -77,11 +98,20 @@ bS.grid(row=0, column=1)
 cakeListBox = Frame(step1F)
 cakeListBox.grid(row=1, column=0)
 
-# Set up Step 2 label and seperator
-Label(frame_main, text="Step 2").grid(row=0, column=4)
+# Set up Step 2 button and seperator
+st2B = Button(frame_main, text="Step 2", command=show_S2)
+st2B.grid(row=0, column=4)
 ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=5, rowspan=3, sticky=(S, N))
 
 step2F = Frame(frame_main)
 step2F.grid(row=0, column=6)
+
+# Set up Step 3 button and seperator
+st3B = Button(frame_main, text='Step 3', command=show_S3)
+st3B.grid(row=0, column=7)
+ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=8, rowspan=3, sticky=(S, N))
+
+step3F = Frame(frame_main)
+step3F.grid(row=0, column=9)
 
 window.mainloop()
