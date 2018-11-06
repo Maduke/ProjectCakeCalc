@@ -2,19 +2,6 @@ from tkinter import *
 from tkinter import ttk
 
 def _test_Input():
-    print(cakeSizeC5.get())
-    print(cakeSizeC6.get())
-    print(cakeSizeC7.get())
-    print(cakeSizeC8.get())
-    print(cakeSizeC9.get())
-    print(cakeSizeC10.get())
-    print(cakeSizeC12.get())
-    print(cakeSizeC14.get())
-    print(cakeSizeC16.get())
-    print(cakeSizeS10.get())
-    print(cakeSizeS12.get())
-    print(cakeSizeS14.get())
-    print(cakeSizeS16.get())
     sum = cakeSizeC5.get()+cakeSizeC6.get()+cakeSizeC7.get()+cakeSizeC8.get() + cakeSizeC9.get() + cakeSizeC10.get() + \
     cakeSizeC12.get() + cakeSizeC14.get() + cakeSizeC16.get() + cakeSizeS10.get() + cakeSizeS12.get() + \
     cakeSizeS14.get() + cakeSizeS16.get()
@@ -77,6 +64,7 @@ cakeSizeC12 = IntVar()
 cakeSizeC14 = IntVar()
 cakeSizeC16 = IntVar()
 
+
 # Set up the window with a name, icon and basic formatting
 window.title("Custom Creations Cake Calculator")
 #window.iconbitmap('BakeryLogo.png')
@@ -103,7 +91,7 @@ out1.grid(row=6, column=1)
 frame2 = Frame(frame1)
 frame2.grid(row=0, column=3)
 Label(frame2, text="Step 2").grid(row=0, column=0)
-ttk.Separator(frame2, orient=VERTICAL).grid(column=2, sticky="ns")
+ttk.Separator(frame2, orient=VERTICAL).grid(row=0, column=2, rowspan=3, sticky=(S,N))
 window.mainloop()
 
 
