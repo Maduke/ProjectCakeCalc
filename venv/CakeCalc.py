@@ -39,23 +39,20 @@ def clearWidg(fName):
 
 
 def show_S1():
-    print('Hewwo World')
     step2F.grid_forget()
     step1F.grid(row=0, column=3)
     step3F.grid_forget()
 
 def show_S2():
-    print('Hewwo World')
     step1F.grid_forget()
-    step2F.grid(row=0, column=3)
+    step2F.grid(row=0, column=6)
     step3F.grid_forget()
 
 
-def show_S2():
-    print('Hewwo World')
+def show_S3():
     step1F.grid_forget()
     step2F.grid_forget()
-    step3F.grid(row=0, column=3)
+    step3F.grid(row=0, column=9)
 
 
 window = Tk()
@@ -81,11 +78,11 @@ frame_main = Frame(window, relief="sunken")
 frame_main.grid(padx=50, pady=5, row=0, column=0)
 
 # Set up Step 1 button and seperator
-st1B = Button(frame_main, text="Step 1", command=show_S1)
+st1B = Button(frame_main, text="Step 1", command=show_S1, bg='blue', activebackground='lightblue')
 st1B.grid(row=0, column=0)
-ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=2, rowspan=3, sticky=(S, N))
+ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=2, rowspan=3, padx=5, sticky=(S, N))
 
-step1F = Frame(frame_main)
+step1F = Frame(frame_main, bg='lightblue', padx=5, pady=5)
 step1F.grid(row=0, column=3)
 
 # Set up Cake Type Buttons
@@ -101,17 +98,17 @@ cakeListBox.grid(row=1, column=0)
 # Set up Step 2 button and seperator
 st2B = Button(frame_main, text="Step 2", command=show_S2)
 st2B.grid(row=0, column=4)
-ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=5, rowspan=3, sticky=(S, N))
+ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=5, rowspan=3, padx=5, sticky=(S, N))
 
-step2F = Frame(frame_main)
-step2F.grid(row=0, column=6)
+step2F = Frame(frame_main, padx=5, pady=5)
+step2F.grid(row=0, column=6, padx=5, pady=5)
 
 # Set up Step 3 button and seperator
 st3B = Button(frame_main, text='Step 3', command=show_S3)
-st3B.grid(row=0, column=7)
-ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=8, rowspan=3, sticky=(S, N))
+st3B.grid(row=0, column=7, padx=5, pady=5)
+ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=8, rowspan=3, padx=5, sticky=(S, N))
 
-step3F = Frame(frame_main)
-step3F.grid(row=0, column=9)
+step3F = Frame(frame_main, padx=5, pady=5)
+step3F.grid(row=0, column=9, padx=5, pady=5)
 
 window.mainloop()
