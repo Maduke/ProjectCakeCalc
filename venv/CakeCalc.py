@@ -1,13 +1,20 @@
 from tkinter import *
 from tkinter import ttk
 
+elColor = '#46494c'  # standard element color
+elDkColor = '#4c5c68'  # element highlight color
+elTextCol = '#c5c3c6'  # element text color
+backCol = '#dcdcdd'  # background color
+specCol = '#1985a1'  # special color
+
+
 
 def show_roundCakes():  # show all round cake sizes
     clearWidg(cakeListBox)
-    Checkbutton(cakeListBox, text='5-in', onvalue=7, variable=cakeSizeC5).grid(row=1, column=0)
-    Checkbutton(cakeListBox, text='6-in', onvalue=9, variable=cakeSizeC6).grid(row=2, column=0)
-    Checkbutton(cakeListBox, text='7-in', onvalue=12, variable=cakeSizeC7).grid(row=3, column=0)
-    Checkbutton(cakeListBox, text='8-in', onvalue=16, variable=cakeSizeC8).grid(row=4, column=0)
+    Checkbutton(cakeListBox, text='5-in', onvalue=7, variable=cakeSizeC5, bg=specCol).grid(row=1, column=0)
+    Checkbutton(cakeListBox, text='6-in', onvalue=9, variable=cakeSizeC6, bg=specCol).grid(row=2, column=0)
+    Checkbutton(cakeListBox, text='7-in', onvalue=12, variable=cakeSizeC7, bg=specCol).grid(row=3, column=0)
+    Checkbutton(cakeListBox, text='8-in', onvalue=16, variable=cakeSizeC8, bg=specCol, ).grid(row=4, column=0)
     Checkbutton(cakeListBox, text='9-in', onvalue=21, variable=cakeSizeC9).grid(row=5, column=0)
     Checkbutton(cakeListBox, text='10-in', onvalue=27, variable=cakeSizeC10).grid(row=6, column=0)
     Checkbutton(cakeListBox, text='12-in', onvalue=34, variable=cakeSizeC12).grid(row=7, column=0)
@@ -21,10 +28,10 @@ def show_roundCakes():  # show all round cake sizes
 
 def show_squareCakes():  # show all square cake sizes
     clearWidg(cakeListBox)
-    Checkbutton(cakeListBox, text='10-in', onvalue=26, variable=cakeSizeS10).grid(row=1, column=0)
-    Checkbutton(cakeListBox, text='12-in', onvalue=40, variable=cakeSizeS12).grid(row=2, column=0)
-    Checkbutton(cakeListBox, text='14-in', onvalue=60, variable=cakeSizeS14).grid(row=3, column=0)
-    Checkbutton(cakeListBox, text='16-in', onvalue=90, variable=cakeSizeS16).grid(row=4, column=0)
+    Checkbutton(cakeListBox, text='10-in', onvalue=26, variable=cakeSizeS10, bg=specCol, relief="raised").grid(row=1, column=0)
+    Checkbutton(cakeListBox, text='12-in', onvalue=40, variable=cakeSizeS12, bg=specCol, ).grid(row=2, column=0)
+    Checkbutton(cakeListBox, text='14-in', onvalue=60, variable=cakeSizeS14, bg=specCol).grid(row=3, column=0)
+    Checkbutton(cakeListBox, text='16-in', onvalue=90, variable=cakeSizeS16, bg=specCol).grid(row=4, column=0)
     bS['relief'] = 'sunken'
     bC['relief'] = 'raised'
     #cakeListBox.update()
@@ -73,30 +80,31 @@ cakeSizeC16 = IntVar()
 
 # Set up the window with a name, icon and basic formatting
 window.title("Custom Creations Cake Calculator")
+window.configure(background=backCol)
 # window.iconbitmap('BakeryLogo.png')
 frame_main = Frame(window, relief="sunken")
 frame_main.grid(padx=50, pady=5, row=0, column=0)
 
 # Set up Step 1 button and seperator
-st1B = Button(frame_main, text="Step 1", command=show_S1, bg='blue', activebackground='lightblue')
+st1B = Button(frame_main, text="Step 1", command=show_S1, bg=elColor, activebackground=elDkColor, fg=elTextCol)
 st1B.grid(row=0, column=0)
 ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=2, rowspan=3, padx=5, sticky=(S, N))
 
-step1F = Frame(frame_main, bg='lightblue', padx=5, pady=5)
-step1F.grid(row=0, column=3)
+step1F = Frame(frame_main, bg=specCol, padx=5, pady=5)
+step1F.grid(row=1, column=0)
 
 # Set up Cake Type Buttons
-bC = Button(step1F, text="Circular Cake", command=show_roundCakes)
-bS = Button(step1F, text="Square Cake", command=show_squareCakes)
+bC = Button(step1F, text="Circular Cake", command=show_roundCakes, bg=elColor, activebackground=elDkColor, fg=elTextCol)
+bS = Button(step1F, text="Square Cake", command=show_squareCakes, bg=elColor, activebackground=elDkColor, fg=elTextCol)
 bC.grid(row=0, column=0)
 bS.grid(row=0, column=1)
 
 # Set up box for the size options
-cakeListBox = Frame(step1F)
+cakeListBox = Frame(step1F, bg=specCol, relief="flat")
 cakeListBox.grid(row=1, column=0)
 
 # Set up Step 2 button and seperator
-st2B = Button(frame_main, text="Step 2", command=show_S2)
+st2B = Button(frame_main, text="Step 2", command=show_S2, bg=elColor, activebackground=elDkColor, fg=elTextCol)
 st2B.grid(row=0, column=4)
 ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=5, rowspan=3, padx=5, sticky=(S, N))
 
@@ -104,7 +112,7 @@ step2F = Frame(frame_main, padx=5, pady=5)
 step2F.grid(row=0, column=6, padx=5, pady=5)
 
 # Set up Step 3 button and seperator
-st3B = Button(frame_main, text='Step 3', command=show_S3)
+st3B = Button(frame_main, text='Step 3', command=show_S3, bg=elColor, activebackground=elDkColor, fg=elTextCol)
 st3B.grid(row=0, column=7, padx=5, pady=5)
 ttk.Separator(frame_main, orient=VERTICAL).grid(row=0, column=8, rowspan=3, padx=5, sticky=(S, N))
 
