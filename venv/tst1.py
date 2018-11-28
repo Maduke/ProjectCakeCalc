@@ -15,7 +15,6 @@ def show_S1():
     step2Frame.grid_forget()
     step3Frame.grid_forget()
     step1MenuFrame.grid(row=0, column=0)
-    print('Halp')
 
 
 
@@ -74,6 +73,11 @@ cakeSizeC10 = IntVar()
 cakeSizeC12 = IntVar()
 cakeSizeC14 = IntVar()
 cakeSizeC16 = IntVar()
+cakeType = DoubleVar()
+cakeTypeMod = DoubleVar()
+sculpted = DoubleVar()
+complexity = DoubleVar()
+
 # Create the 3 main frames that define the formatting of the GUI
 menuFrame = Frame(window)
 menuFrame.grid(row=0, column=0)
@@ -97,13 +101,26 @@ step3Frame = Frame(bodyFrame)
 step1MenuFrame = Frame(step1Frame)
 cakeSizeFrame = Frame(step1Frame)
 
+# Set up step 2
+Radiobutton(step2Frame, text="Normal", variable=cakeType, value=3.55).grid(row=0, column=0)
+Label(step2Frame, text=" OR ").grid(row=0, column=1)
+Radiobutton(step2Frame, text="Tiered", variable=cakeType, value=3.30).grid(row=0, column=2)
+Checkbutton(step2Frame, text="Fondant Covered", onvalue=0.75, variable=cakeTypeMod).grid(row=1, column=0)
+Checkbutton(step2Frame, text="Sculpted", onvalue=25.00, variable=sculpted).grid(row=2, column=0)
+
+# set up step 3
+Radiobutton(step2Frame, text="Simple", value=10.00, variable=complexity).grid(row=0, column=0)
+Radiobutton(step2Frame, text="Medium", value=10.00, variable=complexity).grid(row=0, column=0)
+Radiobutton(step2Frame, text="Hard", value=10.00, variable=complexity).grid(row=0, column=0)
+Radiobutton(step2Frame, text="Complex", value=10.00, variable=complexity).grid(row=0, column=0)
+
 # make step 1 visible from the start
 show_S1()
 
 
 # Set up the menu bar
-st1Button = Button(menuFrame, text='Step 1', command=show_S1)
-st2Button = Button(menuFrame, text='Step 2', command=show_S2)
+st1Button = Button(menuFrame, text='Cake Size (Step 1)', command=show_S1)
+st2Button = Button(menuFrame, text='Cake Type (Step 2)', command=show_S2)
 st3Button = Button(menuFrame, text='Step 3', command=show_S3)
 st1Button.grid(row=0, column=0)
 st2Button.grid(row=0, column=1)
